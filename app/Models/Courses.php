@@ -28,7 +28,7 @@ class Courses extends Model
     }
     public function getIsPaidUserAttribute()
     {
-        $userId = auth('api')->user()->id;
+        $userId = auth('api')->user()->id ?? null;
         $buyCourse = $this->BuyCourse->where('user_id', $userId)->where('course_id',$this->id)->first();
         return $buyCourse ? true : false;
 
