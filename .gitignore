@@ -6,8 +6,6 @@
 /public/images
 /storage/*.key
 /vendor
-/public/_dashboard
-/public/dashboard
 .env
 .env.backup
 .env.production
