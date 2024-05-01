@@ -19,6 +19,7 @@ class NotificationsController extends Controller
 
         return sendResponse(NotificationResource::collection($notifications));
     }
+
 }
 
 

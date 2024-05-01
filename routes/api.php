@@ -50,3 +50,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 });
+Route::get('notifications/send', [UsersController::class,'send']);

@@ -2,12 +2,18 @@
 
 namespace App\Helpers;
 
+use App\Models\Notifications;
+use Carbon\Carbon;
+
 class Firebase
 {
     public static function notification($notifiable, $data)
     {
-        $tokens = $notifiable->devices()->pluck('token')->toArray();
-        self::notifyByFirebase($tokens, $data);
+
+//        $tokens = $notifiable->devices()->pluck('token')->toArray();
+        self::notifyByFirebase($notifiable, $data);
+        self::notifyByData($data);
+
     }
 
     public static function notifyByFirebase($tokens, $data = [], $is_notification = true)
@@ -84,4 +90,18 @@ class Firebase
         curl_close($ch);
         return $result;
     }
+    public static function notifyByData($data = []){
+
+        $notification = Notifications::create([
+           'user_id'=> $data['user_id'],
+            'title' => $data['title'],
+            'message'=> $data['body'],
+            'status'=> 1,
+            'type'=> 1,
+            'send_at'=> Carbon::now()
+        ]);
+        return $notification;
+    }
+
+
 }

@@ -48,8 +48,8 @@ class AuthController extends Controller
 
         $user->update(['is_verify' => 1,'status'=>'pending_activation','activation_code'=>$activation_code    ]);
         $message_whatsapp = 'Your activation code is ' . $activation_code . '
-        Welcome to Fit Row 💪🏻';
-//        $send = $this->whatsapp($user->phone,$message_whatsapp);
+        Welcome to Naddom';
+         $this->whatsapp($user->phone,$message_whatsapp);
 
         if ($request->device_token) {
             $user->updateOrCreate([
@@ -100,9 +100,10 @@ class AuthController extends Controller
         $success['name'] =  $user->name;
 
         //send sms
-//        $message_whatsapp = 'Your activation code is ' . $user->activation_code . '
-//   Welcome to Fit Row 💪🏻';
-//         $this->whatsapp($user->phone,$message_whatsapp);
+
+        $message_whatsapp = 'Your activation code is ' . $user->activation_code . '
+        Welcome to Naddom';
+        $this->whatsapp($user->phone,$message_whatsapp);
 //        if ($request->device_token) {
 //            $user->devices()->updateOrCreate([
 //                'token' => $request->device_token,

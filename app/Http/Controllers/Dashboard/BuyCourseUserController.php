@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\BuyCourseUserDataTable;
+use App\Helpers\Firebase;
 use App\Http\Controllers\Controller;
 use App\Models\BuyCourseUser;
 use App\Models\Courses;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BuyCourseUserController extends Controller
@@ -35,6 +37,14 @@ class BuyCourseUserController extends Controller
             'user_id' => $request->user_id,
             'status' => '1',
         ]);
+        $data=[
+            'user_id'=> $request->user_id,
+            'title'=>'شراء كورس',
+            'body'=>'تم شراء الكورس بنجاح',
+        ];
+        $token= User::where('id',$request->user_id)->pluck('device_token')->toArray();
+        Firebase::notification($token,$data);
+
         return redirect()->route('buy_course_user.index',$request->user_id);
     }
 

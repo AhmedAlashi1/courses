@@ -24,9 +24,8 @@ use App\Http\Controllers\Dashboard\BuyCourseUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class,'index'])->middleware('auth');
+Route::post('send', [NotifyController::class, 'sendNotification'])->name('Notification.send');
 Route::group([
     'prefix' => '/admin/',
     'middleware' => ['web']
