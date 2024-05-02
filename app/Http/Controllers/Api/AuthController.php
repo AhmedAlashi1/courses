@@ -46,15 +46,18 @@ class AuthController extends Controller
             $activation_code = 1234;
         }
 
-        $user->update(['is_verify' => 1,'status'=>'pending_activation','activation_code'=>$activation_code    ]);
+        $user->update(['is_verify' => 1,'status'=>'pending_activation','activation_code'=>$activation_code]);
+
         $message_whatsapp = 'Your activation code is ' . $activation_code . '
         Welcome to Naddom';
-         $this->whatsapp($user->phone,$message_whatsapp);
+//         $this->whatsapp($user->phone,$message_whatsapp);
 
         if ($request->device_token) {
-            $user->updateOrCreate([
-                'token' => $request->device_token,
+            $user->update([
+                'device_token' => $request->device_token,
+                'device_type' => $request->device_type,
             ]);
+
         }
         $data = [
             'user' => new UserResource($user),
@@ -89,6 +92,7 @@ class AuthController extends Controller
         $data['name']= $request->name;
         $data['phone']= $phone;
         $data['device_token']= $request->device_token;
+        $data['device_type']= $request->device_type;
         $data['status']= 'pending_activation';
 
         if ($data['phone'] == '0096512345678') {
@@ -104,6 +108,8 @@ class AuthController extends Controller
         $message_whatsapp = 'Your activation code is ' . $user->activation_code . '
         Welcome to Naddom';
         $this->whatsapp($user->phone,$message_whatsapp);
+
+
 //        if ($request->device_token) {
 //            $user->devices()->updateOrCreate([
 //                'token' => $request->device_token,

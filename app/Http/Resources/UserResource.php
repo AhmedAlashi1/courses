@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'is_verify' => $this->is_verify,
             'status' => $this->status,
             'device_token' => $this->device_token,
+            'device_type' => $this->device_type,
         ];
     }
 }

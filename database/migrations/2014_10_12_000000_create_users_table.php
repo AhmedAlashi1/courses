@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('activation_code', 5)->nullable();
             $table->integer('resend_code_count')->default('0');
             $table->string('device_token', 255)->nullable();
+            $table->string('device_type', 255)->nullable();
 
             $table->rememberToken();
             $table->timestamps();
