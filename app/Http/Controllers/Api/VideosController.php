@@ -7,6 +7,7 @@ use App\Http\Resources\VideosResource;
 use App\Models\Videos;
 use App\Models\WatchingVideoUser;
 use Illuminate\Http\Request;
+use function Laravel\Prompts\error;
 
 class VideosController extends Controller
 {
@@ -47,10 +48,10 @@ class VideosController extends Controller
 
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            echo 'Error:' . curl_error($ch);
+            return sendError( \GuzzleHttp\json_decode(curl_error($ch)));
         }
         curl_close($ch);
-        return $result;
+        return sendResponse(\GuzzleHttp\json_decode($result));
 
     }
 }
