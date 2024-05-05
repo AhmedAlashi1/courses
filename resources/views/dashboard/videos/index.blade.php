@@ -111,7 +111,7 @@
                             </div>
                             <div class="card-body pt-0 text-center">
                                 <div class="file-manger-icon" style="padding-bottom : 8px;">
-                                    <a href="javascript:void(0);" class="show-video" data-video="{{asset($video->path)}}">
+                                    <a href="{{$video->path}}" data-video="{{asset($video->path)}}" target="_blank" >
                                         <img src="{{ $video->image ? asset($video->image) : asset('dashboard/img/users/6.jpg') }}" alt="img" class="rounded-7">
                                     </a>
                                 </div>

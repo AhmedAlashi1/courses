@@ -62,10 +62,10 @@ class VideosController extends Controller
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $image_path = $this->uploadImage('admin', $request->image);
         }
-        if ($request->hasFile('path') && $request->file('path')->isValid()) {
-            $video_path = $this->uploadImage('admin', $request->path);
-        }
-        $extractedFile = $this->getVideoDuration($video_path);
+//        if ($request->hasFile('path') && $request->file('path')->isValid()) {
+//            $video_path = $this->uploadImage('admin', $request->path);
+//        }
+//        $extractedFile = $this->getVideoDuration($video_path);
 
 
         $courses = Videos::create([
@@ -77,29 +77,14 @@ class VideosController extends Controller
             'description_en' => $request->description_ar,
             'status' => '1',
             'image' => $image_path,
-            'path' => $video_path,
-            'duration' => $extractedFile,
+            'path' => $request->path,
+            'duration' => $request->duration,
         ]);
 
 
         toastr()->success(__('messages.Created successfully'));
         return redirect()->route('videos.index',[$request->courses_id,$request->section_id]);
     }
-
-//
-//    public function changeAlternativeVideo($id)
-//    {
-//        $video = VideosFile::find($id);
-//        $video->update(\request()->only(['alternative_video_id', 'second_alternative_video_id']));
-//        return redirect()->route('videosFile.index')->with('success', 'Changed successfully');
-//    }
-
-//    public function deleteAlternativeVideo($id)
-//    {
-//        $video = VideosFile::find($id);
-//        $video->update([\request('key') => null]);
-//        return response()->json('success');
-//    }
 
 
     public function fileuploader(Request $request){
@@ -163,36 +148,36 @@ class VideosController extends Controller
         }
 
     }
-    public function getVideoDuration($videoPath)
-    {
-        // تحديد مسار تنصيب الأداة الفعلية ffmpeg
-//        Config::set('ffmpeg', '/path/to/ffprobe');
-
-        $ffmpeg = FFMpeg::create();
-        $video = $ffmpeg->open($videoPath);
-
-        // احصل على مدة الفيديو بالثواني
-        $durationInSeconds = $video->getStreams()->first()->get('duration');
-
-        // احسب المدة بالدقائق والثواني
-        $minutes = floor($durationInSeconds / 60);
-        $seconds = $durationInSeconds % 60;
-
-        // قم بإعادة المدة بتنسيق الدقائق:الثواني
-        return $minutes.':'.$seconds;
-    }
-    public function getVideoImage($videoPath,$time,$imageName){
-        $ffmpeg = FFMpeg::create();
-
-        $video = $ffmpeg->open($videoPath);
-
-        $frame = $video->frame(TimeCode::fromSeconds($time));
-
-        $thumbnailPath = public_path($imageName);
-        $frame->save($thumbnailPath);
-        return $imageName;
-
-    }
+//    public function getVideoDuration($videoPath)
+//    {
+//        // تحديد مسار تنصيب الأداة الفعلية ffmpeg
+////        Config::set('ffmpeg', '/path/to/ffprobe');
+//
+//        $ffmpeg = FFMpeg::create();
+//        $video = $ffmpeg->open($videoPath);
+//
+//        // احصل على مدة الفيديو بالثواني
+//        $durationInSeconds = $video->getStreams()->first()->get('duration');
+//
+//        // احسب المدة بالدقائق والثواني
+//        $minutes = floor($durationInSeconds / 60);
+//        $seconds = $durationInSeconds % 60;
+//
+//        // قم بإعادة المدة بتنسيق الدقائق:الثواني
+//        return $minutes.':'.$seconds;
+//    }
+//    public function getVideoImage($videoPath,$time,$imageName){
+//        $ffmpeg = FFMpeg::create();
+//
+//        $video = $ffmpeg->open($videoPath);
+//
+//        $frame = $video->frame(TimeCode::fromSeconds($time));
+//
+//        $thumbnailPath = public_path($imageName);
+//        $frame->save($thumbnailPath);
+//        return $imageName;
+//
+//    }
 
     public function destroy($id)
     {

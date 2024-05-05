@@ -49,16 +49,22 @@
 
 
                             <div class="form-group col-md-6 has-success mg-t-10">
-                                <label for="exampleInputEmail1">{{ __('messages.image') }} : </label>
+                                <label for="exampleInputEmail1">{{ __('messages.duration') }} : </label>
+                                <input type="text"  class="form-control"  name="duration"  required>
+
+                            </div>
+                            <div class="form-group col-md-6 has-success mg-t-10">
+                                <label for="exampleInputEmail1">{{ __('messages.Videos Url') }} : </label>
+                                <input type="url"  class="form-control"  name="path"  required>
+
+                            </div>
+                            <div class="form-group col-md-12 has-success mg-t-10">
+                                <label for="exampleInputEmail1">{{ __('messages.Image') }} : </label>
                                 <input type="file"  class="form-control"  name="image" accept="image/*" required>
 
                             </div>
 
-                            <div class="form-group col-md-6 has-success mg-t-10">
-                                <label for="exampleInputEmail1">{{ __('messages.Videos') }} : </label>
-                                <input type="file"  class="form-control"  name="path" accept="video/*" required>
 
-                            </div>
 
 
                             <div class="modal-footer">

@@ -192,7 +192,9 @@ return [
     'carb' => 'Carb',
     'kcal' => 'Kcal',
     'Videos' => 'Videos',
+    'Videos Url' => 'Videos Url',
     'Users' => 'Users',
+    'Image' => 'Image',
     'sex' => 'Sex',
     'email' => 'Email',
     'phone' => 'Phone',
@@ -295,6 +297,7 @@ return [
         'settings' => 'Settings',
         'courses' => 'Courses',
         'videos' => 'Videos',
+        'duration' => 'Duration',
 
         'all' => 'All',
         'create' => 'Create',
