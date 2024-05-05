@@ -21,7 +21,7 @@ class VideosResource extends JsonResource
             'title' => $this->$name,
             'description' => $this->$description,
             'image' => $this->image ? url($this->image) : null,
-            'video' => $this->path ? url($this->path) : null,
+            'video' => $this->path ? $this->path : null,
             'duration' => $this->duration,
             'watching_user' => $this->watching? true : false,
         ];
