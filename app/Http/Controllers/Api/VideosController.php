@@ -48,7 +48,7 @@ class VideosController extends Controller
 
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            return sendError( \GuzzleHttp\json_decode(curl_error($ch)));
+            return sendError(curl_error($ch));
         }
         curl_close($ch);
         return sendResponse(\GuzzleHttp\json_decode($result));
