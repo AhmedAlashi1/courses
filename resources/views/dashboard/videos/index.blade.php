@@ -103,7 +103,7 @@
                                         <i class="fe fe-more-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu rounded-7">
-{{--                                        <a class="dropdown-item edit-btn" href="javascript:void(0);" data-video="{{ $video }}"><i class="fe fe-edit me-2"></i> {{__('messages.Edit')}}</a>--}}
+                                        <a class="dropdown-item " href="{{route('videos.edit',$video->id)}}" ><i class="fe fe-edit me-2"></i> {{__('messages.Edit')}}</a>
                                         <a class="dropdown-item delete-btn" href="javascript:void(0);" data-id="{{ $video->id }}" data-namee="{{ $video->title_ar }}"><i class="fe fe-trash me-2"></i>
                                             {{__('messages.Delete')}}</a>
                                     </div>

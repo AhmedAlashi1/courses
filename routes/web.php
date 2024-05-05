@@ -74,10 +74,11 @@ Route::group([
 
 
                 Route::group(['prefix' => 'videos'],function (){
-            Route::get('/{course_id}/{section_id}',[VideosController::class, 'index'])->name('videos.index');
+            Route::get('show-all/{course_id}/{section_id}',[VideosController::class, 'index'])->name('videos.index');
             Route::get('/create/{course_id}/{section_id}',[VideosController::class, 'create'])->name('videos.create');
             Route::post('/store',[VideosController::class, 'store'])->name('videos.store');
-//            Route::get('/edit/{id}',[CoursesController::class, 'store'])->name('courses.store');
+            Route::get('/edit/{id}',[VideosController::class, 'edit'])->name('videos.edit');
+            Route::post('/update/{id}',[VideosController::class, 'update'])->name('videos.update');
             Route::get('/delete/{id}',[VideosController::class, 'destroy'])->name('videos.delete');
         });
         // settings

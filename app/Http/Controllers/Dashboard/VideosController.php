@@ -87,6 +87,37 @@ class VideosController extends Controller
     }
 
 
+    public function edit($id){
+            $video = Videos::find($id);
+        return view('dashboard.videos.edit',compact('video'));
+
+    }
+    public function update(Request $request,$id)
+    {
+        $videos = Videos::findorFail($id);
+
+        try {
+            $data = $request->all();
+            if ($request->has('image')) {
+                $image_path = $this->uploadImage('admin', $request->image);
+                $data['image'] = $image_path;
+                if ($videos->image && File::exists($videos->image)) {
+                    File::delete($videos->image);
+                }
+            }
+            $data['title_en'] = $request->title_ar;
+            $data['description_en'] = $request->description_ar;
+
+            $videos->update($data);
+//
+            toastr()->success(__('messages.updated successfully'));
+            return redirect()->route('videos.index',[$videos->courses_id,$videos->section_id]);
+        } catch (\Exception $ex) {
+            toastr()->error(__('messages.There was an error try again'));
+            return redirect()->route('videos.edit',$id);
+        }
+    }
+
     public function fileuploader(Request $request){
         $places = implode(',', $request->place);
         $gender = implode(',',$request->gender);
