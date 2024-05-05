@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group col-md-6 has-success mg-t-10">
                                 <label for="exampleInputEmail1">{{ __('messages.Videos Url') }} : </label>
-                                <input type="url"  class="form-control" value="{{$video->path}}" name="path"  required>
+                                <input type="text"  class="form-control" value="{{$video->path}}" name="path"  required>
 
                             </div>
                             <div class="form-group col-md-12 has-success mg-t-10">

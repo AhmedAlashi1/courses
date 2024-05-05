@@ -51,3 +51,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 Route::get('notifications/send', [UsersController::class,'send']);
+Route::get('video/info/{url}', [VideosController::class,'getVideoInfo']);
