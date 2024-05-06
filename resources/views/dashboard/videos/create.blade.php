@@ -50,7 +50,7 @@
 
                             <div class="form-group col-md-6 has-success mg-t-10">
                                 <label for="exampleInputEmail1">{{ __('messages.duration') }} : </label>
-                                <input type="text"  class="form-control"  name="duration"  required>
+                                <input type="text"  class="form-control"  name="duration"  >
 
                             </div>
                             <div class="form-group col-md-6 has-success mg-t-10">
