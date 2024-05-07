@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('authToken')->plainTextToken;
         $activation_code = rand(1111, 9999);
-        if ($phone === '+96555558718') {
+        if ($phone === '+96555558718' or $phone === '0096512345678') {
             $activation_code = 1234;
         }
 
