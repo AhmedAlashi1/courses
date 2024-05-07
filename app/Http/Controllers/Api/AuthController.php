@@ -50,7 +50,7 @@ class AuthController extends Controller
 
         $message_whatsapp = 'Your activation code is ' . $activation_code . '
         Welcome to Naddom';
-//         $this->whatsapp($user->phone,$message_whatsapp);
+         $this->whatsapp($user->phone,$message_whatsapp);
 
         if ($request->device_token) {
             $user->update([
