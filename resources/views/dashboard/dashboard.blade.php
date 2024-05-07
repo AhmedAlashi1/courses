@@ -30,12 +30,12 @@
             <div class="card overflow-hidden sales-card bg-danger-gradient">
                 <div class="px-3 pt-3  pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">{{__('messages.Number of orders')}}</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{__('Number of Courses')}}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-{{--                                <h4 class="tx-20 fw-bold mb-1 text-white">{{\App\Models\Orders::count()}}</h4>--}}
+                                <h4 class="tx-20 fw-bold mb-1 text-white">{{\App\Models\Courses::count()}}</h4>
                             </div>
                         </div>
                     </div>
@@ -47,12 +47,12 @@
             <div class="card overflow-hidden sales-card bg-success-gradient">
                 <div class="px-3 pt-3  pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">{{__('messages.sum of price')}}</h6>
+                        <h6 class="mb-3 tx-12 text-white">{{__('Number of Videos')}}</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-{{--                                <h4 class="tx-20 fw-bold mb-1 text-white">${{ number_format(\App\Models\Orders::where('payment_status', 1)->sum('price'), 2) }}</h4>--}}
+                                <h4 class="tx-20 fw-bold mb-1 text-white">{{(\App\Models\Videos::count()) }}</h4>
 
                             </div>
                         </div>
@@ -91,11 +91,11 @@
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">{{__('messages.Orders and Users count')}}</h4>
+                        <h4 class="card-title mb-0">{{__('Number of video views')}}</h4>
                     </div>
                 </div>
                 <div class="card-body">
-{{--                    {!! $lineChart->render() !!}--}}
+                    {!! $lineChart->render() !!}
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@
         content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4">
 
     <!-- Title -->
-    <title> Nadoom </title>
+    <title> Naddom </title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('dashboard/img/fitrow.png') }}" type="image/x-icon">
@@ -51,7 +51,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
                     <div class="row wd-100p mx-auto text-center">
                         <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
-                            <img src="{{ asset('dashboard/img/pngs/5.png') }}"
+                            <img src="{{ asset('icon-new/1.gif') }}"
                                 class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
                         </div>
                     </div>

@@ -16,54 +16,55 @@ class DashboardController extends Controller
 //    }
     //
     public function index(){
-//        $lastWeek = $this->getLastWeekLabels();
-//        $datasets = $this->generateDatasets($lastWeek);
-//
-//        $chartOptions = [
-//            'responsive' => true,
-//            'legend' => [
-//                'display' => true,
-//                'labels' => [
-//                    'fontColor' => '#333',
-//                    'fontSize' => 14,
-//                ],
-//            ],
-//            'scales' => [
-//                'xAxes' => [[
-//                    'ticks' => [
-//                        'fontColor' => '#333',
-//                    ],
-//                ]],
-//                'yAxes' => [[
-//                    'ticks' => [
-//                        'beginAtZero' => true,
-//                        'fontColor' => '#333',
-//                    ],
-//                ]],
-//            ],
-//            'animation' => [
-//                'duration' => 2500,
-//            ],
-//            'elements' => [
-//                'line' => [
-//                    'borderWidth' => 2, // Adjust the thickness of the lines
-//                ],
-//                'point' => [
-//                    'radius' => 4, // Adjust the size of the data points
-//                    'hoverRadius' => 6,
-//                ],
-//            ],
-//            'cubicInterpolationMode' => 'default', // Use 'default' or 'monotone'
-//        ];
+        $lastWeek = $this->getLastWeekLabels();
+        $datasets = $this->generateDatasets($lastWeek);
+//        return $datasets;
+
+        $chartOptions = [
+            'responsive' => true,
+            'legend' => [
+                'display' => true,
+                'labels' => [
+                    'fontColor' => '#333',
+                    'fontSize' => 14,
+                ],
+            ],
+            'scales' => [
+                'xAxes' => [[
+                    'ticks' => [
+                        'fontColor' => '#333',
+                    ],
+                ]],
+                'yAxes' => [[
+                    'ticks' => [
+                        'beginAtZero' => true,
+                        'fontColor' => '#333',
+                    ],
+                ]],
+            ],
+            'animation' => [
+                'duration' => 2500,
+            ],
+            'elements' => [
+                'line' => [
+                    'borderWidth' => 2, // Adjust the thickness of the lines
+                ],
+                'point' => [
+                    'radius' => 4, // Adjust the size of the data points
+                    'hoverRadius' => 6,
+                ],
+            ],
+            'cubicInterpolationMode' => 'default', // Use 'default' or 'monotone'
+        ];
 
 
-//        $lineChart = $this->createChart('lineChart', 'line', $lastWeek, $datasets, $chartOptions);
+        $lineChart = $this->createChart('lineChart', 'line', $lastWeek, $datasets, $chartOptions);
+//        return $lineChart;
 
 //        $menu = SideMenu::where('side_id',null)->with('side')->get();
 //        $sequences =SideMenu::where('side_id', null)->lazy();
 
-        return view('dashboard.dashboard');
-//        return view('dashboard.dashboard',compact( 'lineChart'));
+        return view('dashboard.dashboard',compact( 'lineChart'));
     }
 
     private function createChart($name, $type, $labels, $datasets, $options)
@@ -100,22 +101,21 @@ class DashboardController extends Controller
             $startDate = $day->copy()->startOfDay();
             $endDate = $day->copy()->endOfDay();
 
-            $usersCount = DB::table('users')
+            $usersCount = DB::table('watching_video_user')
                 ->whereBetween('created_at', [$startDate, $endDate])
                 ->count();
 
             $usersDataset[] = $usersCount;
-
-            $ordersCount = DB::table('orders')
-                ->where('payment_status','1')
-                ->whereBetween('created_at', [$startDate, $endDate])
-                ->count();
-
-            $ordersDataset[] = $ordersCount;
+//
+//            $ordersCount =DB::table('users')
+//                ->whereBetween('created_at', [$startDate, $endDate])
+//                ->count();
+//
+//            $ordersDataset[] = $ordersCount;
         }
 
         $datasets[] = [
-            "label" => __('messages.Users'),
+            "label" => __('Watching Video User'),
             'backgroundColor' => "#0162e8",
             'borderColor' => "#0162e8",
             "pointBorderColor" => "#0162e8",
@@ -127,18 +127,18 @@ class DashboardController extends Controller
             'tension'=> 0.3
         ];
 
-        $datasets[] = [
-            "label" => __('messages.Orders'),
-            'backgroundColor' => "#f95374",
-            'borderColor' => "#f95374",
-            "pointBorderColor" => "#f95374",
-            "pointBackgroundColor" => "#fff",
-            "pointHoverBackgroundColor" => "#fff",
-            "pointHoverBorderColor" => "#f95374",
-            'data' => $ordersDataset,
-            'fill'=> false,
-            'tension'=> 0.3
-        ];
+//        $datasets[] = [
+//            "label" => __('messages.Orders'),
+//            'backgroundColor' => "#f95374",
+//            'borderColor' => "#f95374",
+//            "pointBorderColor" => "#f95374",
+//            "pointBackgroundColor" => "#fff",
+//            "pointHoverBackgroundColor" => "#fff",
+//            "pointHoverBorderColor" => "#f95374",
+//            'data' => $ordersDataset,
+//            'fill'=> false,
+//            'tension'=> 0.3
+//        ];
 
         return $datasets;
     }
