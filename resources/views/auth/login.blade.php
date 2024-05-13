@@ -16,7 +16,7 @@
     <title> Naddom </title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('dashboard/img/fitrow.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('icon/logo2.png') }}" type="image/x-icon">
 
     <!-- Icons css -->
     <link href="{{ asset('dashboard/css/icons.css" rel="stylesheet') }}">

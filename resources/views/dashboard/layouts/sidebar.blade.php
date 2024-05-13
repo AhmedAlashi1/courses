@@ -2,14 +2,14 @@
 <div class="sticky">
     <aside class="app-sidebar sidebar-scroll">
         <div class="main-sidebar-header active">
-            <a class="desktop-logo logo-light active" href="index.html"><img
+            <a class="desktop-logo logo-light active" href="{{url('/')}}"><img
                     src="{{ asset('dashboard/img/brand/logo-light.png') }}" class="main-logo" alt="logo"></a>
-            <a class="desktop-logo logo-dark active" href="index.html"><img
+            <a class="desktop-logo logo-dark active" href="{{url('/')}}"><img
                     src="{{ asset('dashboard/img/brand/logo-light.png') }}" class="main-logo" alt="logo"></a>
-            <a class="logo-icon mobile-logo icon-light active" href="index.html"><img
-                    src="{{ asset('dashboard/img/brand/logo-light.png') }}" alt="logo"></a>
-            <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img
-                    src="{{ asset('dashboard/img/brand/logo-light.png') }}" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-light active" href="{{url('/')}}"><img
+                    src="{{ asset('dashboard/img/brand/logo2.png') }}" alt="logo"></a>
+            <a class="logo-icon mobile-logo icon-dark active" href="{{url('/')}}"><img
+                    src="{{ asset('dashboard/img/brand/logo2.png') }}" alt="logo"></a>
         </div>
         <div class="main-sidemenu">
             <div class="app-sidebar__user clearfix">
