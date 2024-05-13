@@ -71,7 +71,7 @@
                                                 <img src="{{ asset('icon/logo.png') }}"
                                                     class="sign-favicon-b ht-40" alt="logo">
                                             </a>
-                                            <h1 class="main-logo1 ms-1 me-0 my-auto tx-28">Naddom</h1>
+{{--                                            <h1 class="main-logo1 ms-1 me-0 my-auto tx-28">Naddom</h1>--}}
                                         </div>
                                         <div class="card-sigin">
                                             <div class="main-signup-header">
