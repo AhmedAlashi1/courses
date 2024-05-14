@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Courses;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserExerciseDays;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -53,7 +56,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+//        return $request->all();
+
+        try {
+            $request['phone']= '00965'.$request->phone;
+
+            $validator = Validator::make($request->all(), [
+                'phone' => 'required|unique:users,phone|numeric',
+            ]);
+            if ($validator->fails()) {
+                return redirect()->route('users.create')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            //error validate
+
+
+            $user = User::create([
+            'name' => $request->name ?$request->name : $request->phone,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->phone),
+             'status' => 'inactive',
+        ]);
+        toastr()->success(__('messages.Created successfully'));
+        return redirect()->route('users.index');
+            } catch (\Exception $ex) {
+        toastr()->error(__('messages.There was an error try again'));
+        return redirect()->route('users.create');
+        }
     }
 
     /**

@@ -17,6 +17,8 @@ class Videos extends Model
         'image', 'path','type','size','duration','status'];
 
     const PAGINATE_NUMBER = 40;
+    protected $appends = ['watching'];
+
 
     public function courses()
     {
@@ -26,9 +28,16 @@ class Videos extends Model
     {
         return $this->belongsTo(Sections::class);
     }
-    public function watching()
+    public function watching_user()
     {
-        return $this->hasOne(WatchingVideoUser::class, 'video_id', 'id');
+        return $this->hasMany(WatchingVideoUser::class, 'video_id', 'id');
+    }
+    public function getWatchingAttribute()
+    {
+        $userId = auth('api')->user()->id ?? null;
+        $watching = $this->watching_user->where('user_id', $userId)->where('video_id',$this->id)->first();
+        return $watching ? true : false;
+
     }
 
 

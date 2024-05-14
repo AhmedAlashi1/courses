@@ -37,6 +37,7 @@ class CoursesController extends Controller
                 });
             }, 'section.videos'])
             ->first();
+//        return $data;
 
         if (!$data) {
             return sendError('course not found');
