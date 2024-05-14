@@ -31,9 +31,12 @@ class AuthController extends Controller
             return sendError( $response['response']);
         }
 
-//        $phone = (new PhoneNumber($request->phone, $request->country_code))->formatE164();
-//        return $phone;
-        $phone =$request->country_code.''.$request->phone ;
+
+        $lengthPhone = strlen($request->phone);
+        $phone = $lengthPhone >= 8 ? $request->phone : $request->country_code .''. $request->phone;
+//        $phone =$request->country_code.''.$request->phone ;
+
+
 
         $user = User::where('phone',$phone)->first();
         if (!$user) {
@@ -79,7 +82,9 @@ class AuthController extends Controller
         }
 //        $phone = (new PhoneNumber($request->phone, $request->country_code))->formatE164();
 //        return $phone;
-        $phone =$request->country_code.''.$request->phone ;
+//        $phone =$request->country_code.''.$request->phone ;
+        $lengthPhone = strlen($request->phone);
+        $phone = $lengthPhone >= 8 ? $request->phone : $request->country_code .''. $request->phone;
         if (User::where('phone', $phone)->exists()) {
             return sendError('Phone already exists');
         }
