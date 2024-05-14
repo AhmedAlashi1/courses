@@ -1,4 +1,4 @@
-@extends('dashboard.layout.main')
+@extends('dashboard.layouts.master')
 @section('title','اضافة عميل')
 @section('content')
     <div class="content-body">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                {!! Form::open(['route'=>'admin.users.store']) !!}
+                                {!! Form::open(['route'=>'users.store']) !!}
                                     @include('dashboard.users.form')
 
                                 {!! Form::close() !!}

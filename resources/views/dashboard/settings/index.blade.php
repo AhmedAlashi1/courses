@@ -39,7 +39,7 @@
                                     @elseif($x->key_id == 'force_update' || $x->key_id == 'force_close')
 
                                         <div class="col-md-10">
-                                            <select   name="$x->key_id" class="form-control" >
+                                            <select   name="{{$x->key_id}}" class="form-control" >
                                                 <option @if($x->value  == '1') selected="selected" @endif value="1">{{__('messages.Yes')}}</option>
                                                 <option @if($x->value == '0') selected="selected" @endif value="0">{{__('messages.No')}}</option>
                                             </select>
