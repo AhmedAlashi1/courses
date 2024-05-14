@@ -12,7 +12,7 @@ use function Laravel\Prompts\error;
 class VideosController extends Controller
 {
     public function show($id){
-        $data = Videos::where('id', $id)->with('watching',function ($q){
+        $data = Videos::where('id', $id)->with('watching_user',function ($q){
             $q->where('user_id', auth()->id());
         })->first();
         $user = auth()->user();
