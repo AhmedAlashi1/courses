@@ -18,7 +18,7 @@ class SectionsResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->$name,
-            'is_paid' => $this->is_paid == 1 ? false : true,
+            'is_paid' => $this->is_paid == 1 ? true : false,
             'video' =>  VideosResource::collection($this->videos),
         ];
     }
