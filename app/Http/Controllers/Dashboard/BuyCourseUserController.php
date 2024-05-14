@@ -37,10 +37,11 @@ class BuyCourseUserController extends Controller
             'user_id' => $request->user_id,
             'status' => '1',
         ]);
+
         $data=[
             'user_id'=> $request->user_id,
-            'title'=>'شراء كورس',
-            'body'=>'تم شراء الكورس بنجاح',
+            'title'=>$courses->title_ar,
+            'body'=>'تم اضافتك الى الدورة بنجاح',
         ];
         $token= User::where('id',$request->user_id)->pluck('device_token')->toArray();
         Firebase::notification($token,$data);
