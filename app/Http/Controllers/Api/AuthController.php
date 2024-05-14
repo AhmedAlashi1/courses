@@ -33,7 +33,7 @@ class AuthController extends Controller
 
 
         $lengthPhone = strlen($request->phone);
-        $phone = $lengthPhone >= 8 ? $request->phone : $request->country_code .''. $request->phone;
+        $phone = $lengthPhone > 8 ? $request->phone : $request->country_code .''. $request->phone;
 //        $phone =$request->country_code.''.$request->phone ;
 
 
@@ -84,7 +84,7 @@ class AuthController extends Controller
 //        return $phone;
 //        $phone =$request->country_code.''.$request->phone ;
         $lengthPhone = strlen($request->phone);
-        $phone = $lengthPhone >= 8 ? $request->phone : $request->country_code .''. $request->phone;
+        $phone = $lengthPhone > 8 ? $request->phone : $request->country_code .''. $request->phone;
         if (User::where('phone', $phone)->exists()) {
             return sendError('Phone already exists');
         }
