@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class UserController extends Controller
@@ -65,9 +66,11 @@ class UserController extends Controller
                 'phone' => 'required|unique:users,phone|numeric',
             ]);
             if ($validator->fails()) {
+                $input = $request->all();
+                $input['phone'] = Str::after($input['phone'], '00965');
                 return redirect()->route('users.create')
                     ->withErrors($validator)
-                    ->withInput();
+                    ->withInput($input);
             }
             //error validate
 
