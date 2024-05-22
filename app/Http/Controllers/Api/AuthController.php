@@ -40,7 +40,7 @@ class AuthController extends Controller
 
         $user = User::where('phone',$phone)->first();
         if (!$user) {
-            return sendError(  'خطأ في بيانات الدخول');
+            return sendError(  'لا يوجد حساب بهذا الرقم الرجاء التسجيل اولاً');
         }
 
         $token = $user->createToken('authToken')->plainTextToken;
