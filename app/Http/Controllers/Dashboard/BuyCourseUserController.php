@@ -14,8 +14,8 @@ class BuyCourseUserController extends Controller
 {
     public function index(BuyCourseUserDataTable $dataTable,$id)
     {
-
-        return $dataTable->render('dashboard.buy_course_user.index',compact('id'));
+        $user = User::find($id);
+        return $dataTable->render('dashboard.buy_course_user.index',compact('id','user'));
     }
     public function create($id){
 

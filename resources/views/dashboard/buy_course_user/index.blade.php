@@ -13,6 +13,17 @@
             </div>
         </div>
         {{--        @endcan--}}
+
+        <div class="card-header pb-0">
+            <div class="row row-xs wd-xl-80p">
+                <div class="col-sm-6 col-md-6 mg-t-10">
+                    <p  class="form-label" style=" color: #333;   font-size: 16px;">{{__('User Name')}} : {{$user->name}}</p>
+                </div>
+                <div class="col-sm-6 col-md-6 mg-t-10">
+                    <p  class="form-label" style=" color: #333;   font-size: 16px;">{{__('Phone')}} : {{$user->phone}}</p>
+                </div>
+        </div>
+        </div>
     </x-slot:header>
     <x-slot:script>
         <script>
