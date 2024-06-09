@@ -35,7 +35,8 @@ class UsersDataTable extends DataTable
                     return $user->created_at->format('Y-m-d H:i');
                 })
                 ->addColumn('name', function ($user) {
-                        return '<a href="' . route('users.show', $user->id) . '">' . $user->name . '</a>';
+//                        return '<a href="' . route('users.show', $user->id) . '">' . $user->name . '</a>';
+                        return '<a href="#">' . $user->name . '</a>';
                 })
                 ->rawColumns(['action','name'])
                 ->filterColumn('created_at', function ($query, $keyword) {
